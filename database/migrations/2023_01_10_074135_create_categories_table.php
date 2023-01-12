@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id')->index();
-            $table->string('name',50);
-            $table->string('email',100)->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password',255);
-            $table->rememberToken();
+        Schema::create('categories', function (Blueprint $table) {
+
+            $table->id('category_id')->index();
+            $table->string('category_name',50)->notnullable();
+            $table->unsignedBigInteger('author'); 
+            $table->foreign('author')->references('user_id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('categories');
     }
 };
