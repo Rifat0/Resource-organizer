@@ -31,6 +31,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             Session::put('authenticated', true);
+            Session::put('auth_data', Auth::user());
  
             return redirect()->intended('dashboard');
         }

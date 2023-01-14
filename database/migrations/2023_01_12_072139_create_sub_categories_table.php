@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category')->notnullable();
             $table->foreign('category')->references('category_id')->on('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('sub_category_name',50)->notnullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

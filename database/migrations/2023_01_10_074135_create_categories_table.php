@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
 
-            $table->id('category_id')->index();
+            $table->id('category_id')->from(1001)->index();
             $table->string('category_name',50)->notnullable();
             $table->unsignedBigInteger('author'); 
             $table->foreign('author')->references('user_id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

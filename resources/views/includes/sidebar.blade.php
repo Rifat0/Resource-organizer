@@ -17,86 +17,36 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Use-Case Preview</h6>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="html/ecommerce/index.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
-                            <span class="nk-menu-text">E-Commerce Panel</span><span class="nk-menu-badge">HOT</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="html/lms/index.html" class="nk-menu-link">
+                    
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
-                            <span class="nk-menu-text">LMS Panel</span><span class="nk-menu-badge">HOT</span>
+                            <span class="nk-menu-text">Header</span>
                         </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="{{route('category.list')}}" class="nk-menu-link"><span class="nk-menu-text">List</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="{{route('category.add')}}" class="nk-menu-link"><span class="nk-menu-text">Add</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Dashboards</h6>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="html/index.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
-                            <span class="nk-menu-text">Default</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="html/index-sales.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-activity-round-fill"></em></span>
-                            <span class="nk-menu-text">Sales</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="html/index-analytics.html" class="nk-menu-link">
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
-                            <span class="nk-menu-text">Analytics</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-heading">
-                        <h6 class="overline-title text-primary-alt">Applications</h6>
-                    </li><!-- .nk-menu-heading -->
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
-                            <span class="nk-menu-text">Projects</span>
+                            <span class="nk-menu-text">Sub-Header</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">Project Cards</span></a>
+                                <a href="html/user-list-default.html" class="nk-menu-link"><span class="nk-menu-text">List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Project List</span></a>
+                                <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                            <span class="nk-menu-text">User Manage</span>
-                        </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="html/user-list-default.html" class="nk-menu-link"><span class="nk-menu-text">User List - Default</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">User List - Regular</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">User List - Compact</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-details-regular.html" class="nk-menu-link"><span class="nk-menu-text">User Details - Regular</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-profile-regular.html" class="nk-menu-link"><span class="nk-menu-text">User Profile - Regular</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/user-card.html" class="nk-menu-link"><span class="nk-menu-text">User Contact - Card</span></a>
-                            </li>
-                        </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item has-sub">
+                    {{-- <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
                             <span class="nk-menu-text">Orders</span>
@@ -527,10 +477,16 @@
                             <span class="nk-menu-icon"><em class="icon ni ni-tag-alt-fill"></em></span>
                             <span class="nk-menu-text">Email Template</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->
     </div><!-- .nk-sidebar-element -->
 </div>
 <!-- sidebar @e -->
+
+{{-- <span class="nk-menu-icon"><em class="icon ni ni-activity-round-fill"></em></span>
+<span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+<span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
+<span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
+<span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span> --}}

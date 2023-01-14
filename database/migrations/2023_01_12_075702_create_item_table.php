@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->float('price', 8, 2)->nullable();
             $table->integer('unit')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

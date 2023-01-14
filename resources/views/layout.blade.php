@@ -163,7 +163,6 @@
     <!-- JavaScript -->
     <script src="{{asset('assets/js/bundle.js?ver=3.1.1')}}"></script>
     <script src="{{asset('assets/js/scripts.js?ver=3.1.1')}}"></script>
-    <script src="{{asset('assets/js/charts/chart-ecommerce.js?ver=3.1.1')}}"></script>
 </body>
 
 </html>

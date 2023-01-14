@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,12 +25,18 @@ Route::controller(LoginController::class)->group(function(){
 
     Route::post('login', 'tryLogin')->name('sample.validate_login');
 
-    Route::get('logout', 'logout')->name('logout')->middleware('authenticated');    
-
-    Route::get('dashboard', 'dashboard')->name('dashboard')->middleware('authenticated');
-
 });
 
-// Route::group(['middleware' => 'authenticated'], function () {
-    
-// });
+Route::group(['middleware' => 'authenticated'], function () {
+
+    Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    Route::get('category-add', [CategoryController::class, 'addForm'])->name('category.add');
+    Route::post('category-store/{categoryId?}', [CategoryController::class, 'store'])->name('category.submit');
+    Route::get('category-list', [CategoryController::class, 'list'])->name('category.list');
+    Route::get('category-edit/{categoryId}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('category-change-status/{categoryId}', [CategoryController::class, 'changeStatus'])->name('category.change.status');
+    Route::get('category-delete/{categoryId}', [CategoryController::class, 'delete'])->name('category.delete');
+});

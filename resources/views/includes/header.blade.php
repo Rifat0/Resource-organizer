@@ -17,7 +17,7 @@
             </div><!-- .nk-header-news -->
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
-                    <li class="dropdown language-dropdown d-none d-sm-block me-n1">
+                    {{-- <li class="dropdown language-dropdown d-none d-sm-block me-n1">
                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                             <div class="quick-icon border border-light">
                                 <img class="icon" src="./images/flags/english-sq.png" alt="">
@@ -51,8 +51,8 @@
                                 </li>
                             </ul>
                         </div>
-                    </li><!-- .dropdown -->
-                    <li class="dropdown chats-dropdown hide-mb-xs">
+                    </li><!-- .dropdown --> --}}
+                    {{-- <li class="dropdown chats-dropdown hide-mb-xs">
                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                             <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
                         </a>
@@ -185,8 +185,8 @@
                                 <a href="html/apps-chats.html">View All</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="dropdown notification-dropdown">
+                    </li> --}}
+                    {{-- <li class="dropdown notification-dropdown">
                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
                             <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                         </a>
@@ -257,7 +257,7 @@
                                 <a href="#">View All</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="dropdown user-dropdown">
                         <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
                             <div class="user-toggle">
@@ -266,15 +266,7 @@
                                 </div>
                                 <div class="user-info d-none d-xl-block">
                                     <div class="user-status user-status-unverified">Unverified</div>
-                                    <div class="user-name dropdown-indicator">
-                                        @auth
-                                            YES
-                                        @endauth
-                                        
-                                        @guest
-                                            No
-                                        @endguest
-                                    </div>
+                                    <div class="user-name dropdown-indicator">{{session()->get('auth_data')->name}}</div>
                                 </div>
                             </div>
                         </a>
@@ -285,8 +277,8 @@
                                         <span>AB</span>
                                     </div>
                                     <div class="user-info">
-                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                        <span class="sub-text">info@softnio.com</span>
+                                        <span class="lead-text">{{session()->get('auth_data')->name}}</span>
+                                        <span class="sub-text">{{session()->get('auth_data')->email}}</span>
                                     </div>
                                 </div>
                             </div>
