@@ -16,7 +16,7 @@ class Authentic
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('authenticated') && $request->session()->get('authenticated') == true) {
+        if ($request->session()->has('auth_data') && !empty($request->session()->get('auth_data'))) {
             return $next($request);
         }
 

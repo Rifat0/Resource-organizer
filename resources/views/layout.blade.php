@@ -2,7 +2,6 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href="../">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="The purpose is to help my brain. It will remember my belongings on my behalf.">
@@ -23,11 +22,11 @@
 
             <!-- wrap @s -->
             <div class="nk-wrap ">
-                
+
                 @include('includes.header')
 
                 @yield('content')
-                
+
                 @include('includes.footer')
 
             </div>

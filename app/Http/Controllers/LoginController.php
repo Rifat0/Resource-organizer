@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -26,16 +26,13 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
- 
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            Session::put('authenticated', true);
             Session::put('auth_data', Auth::user());
- 
             return redirect()->intended('dashboard');
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -46,7 +43,7 @@ class LoginController extends Controller
         return view('content.dashboard');
     }
 
-    function logout()
+    function logout(Request $request)
     {
         Session::flush();
 

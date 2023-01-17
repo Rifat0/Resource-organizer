@@ -8,7 +8,7 @@
                 <div class="components-preview wide-md mx-auto">
                     <div class="nk-block-head nk-block-head-lg wide-sm">
                         <div class="nk-block-head-content">
-                            <h2 class="nk-block-title fw-normal">Headers</h2>
+                            <h2 class="nk-block-title fw-normal">Sub Headers of <strong>{{$allSubCategory->first()->categoryInfo->category_name}}</strong></h2>
                         </div>
                     </div><!-- nk-block-head -->
                     <div class="nk-block nk-block-lg">
@@ -45,25 +45,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(isset($allCategory))
-
-                                    @foreach ($allCategory as $key => $categoryData)
+                                    @if(isset($allSubCategory) && count($allSubCategory) > 0)
+                                    @foreach ($allSubCategory as $key => $subCategoryData)
                                     <tr class="tb-tnx-item">
                                         <td class="tb-tnx-id">
-                                            <span class="tb-lead">{{$categoryData->category_id}}</span>
+                                            <span class="tb-lead">{{$subCategoryData->sub_category_id}}</span>
                                         </td>
                                         <td class="tb-tnx-info">
                                             <div class="tb-tnx-desc">
-                                                <span class="title">{{$categoryData->category_name}}</span>
+                                                <span class="title">{{$subCategoryData->sub_category_name}}</span>
                                             </div>
                                             <div class="tb-tnx-date">
-                                                <span class="date">{{ \Carbon\Carbon::parse($categoryData->created_at)->toFormattedDateString()}}</span>
-                                                <span class="date">{{ \Carbon\Carbon::parse($categoryData->updated_at)->toFormattedDateString()}}</span>
+                                                <span class="date">{{ \Carbon\Carbon::parse($subCategoryData->created_at)->toFormattedDateString()}}</span>
+                                                <span class="date">{{ \Carbon\Carbon::parse($subCategoryData->updated_at)->toFormattedDateString()}}</span>
                                             </div>
                                         </td>
                                         <td class="tb-tnx-amount is-alt">
                                             <div class="tb-tnx-status">
-                                                <span class="badge badge-dot @if($categoryData->status == 'inactive') bg-danger @else bg-success @endif">{{$categoryData->status}}</span>
+                                                <span class="badge badge-dot @if($subCategoryData->status == 'inactive') bg-danger @else bg-success @endif">{{$subCategoryData->status}}</span>
                                             </div>
                                         </td>
                                         <td class="tb-tnx-action">
@@ -71,18 +70,15 @@
                                                 <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <ul class="link-list-opt no-bdr">
-                                                        <li><a href="{{route('category.edit',$categoryData->category_id)}}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                                        <li><a href="{{route('category.change.status',$categoryData->category_id)}}"><em class="icon ni ni-repeat"></em><span>Change Status</span></a></li>
-                                                        <li><a href="{{route('sub.category.add',$categoryData->category_id)}}"><em class="icon ni ni-plus"></em><span>Add Sub Header</span></a></li>
-                                                        <li><a href="{{route('sub.category.list',$categoryData->category_id)}}"><em class="icon ni ni-eye"></em><span>View Sub Header</span></a></li>
+                                                        <li><a href="{{route('sub.category.edit',$subCategoryData->sub_category_id)}}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
+                                                        <li><a href="{{route('sub.category.change.status',$subCategoryData->sub_category_id)}}"><em class="icon ni ni-repeat"></em><span>Change Status</span></a></li>
                                                         <li class="divider"></li>
-                                                        <li><a href="{{route('category.delete',$categoryData->category_id)}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
+                                                        <li><a href="{{route('sub.category.delete',$subCategoryData->sub_category_id)}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-
                                     @endforeach
                                     @endif
                                 </tbody>

@@ -3,9 +3,9 @@
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
             <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                <img class="logo-light logo-img" src="{{asset('images/logo.png')}}" srcset="{{asset('images/logo2x.png')}} 2x" alt="logo">
+                <img class="logo-dark logo-img" src="{{asset('images/logo-dark.png')}}" srcset="{{asset('images/logo-dark2x.png')}} 2x" alt="logo-dark">
+                <img class="logo-small logo-img logo-img-small" src="{{asset('images/logo-small.png')}}" srcset="{{asset('images/logo-small2x.png')}} 2x" alt="logo-small">
             </a>
         </div>
         <div class="nk-menu-trigger me-n2">
@@ -17,7 +17,7 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
-                    
+
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
@@ -30,22 +30,22 @@
                             <li class="nk-menu-item">
                                 <a href="{{route('category.add')}}" class="nk-menu-link"><span class="nk-menu-text">Add</span></a>
                             </li>
-                        </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item has-sub">
+                        </ul>
+                    </li>
+                    {{-- <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-growth-fill"></em></span>
-                            <span class="nk-menu-text">Sub-Header</span>
+                            <span class="nk-menu-text">Item</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/user-list-default.html" class="nk-menu-link"><span class="nk-menu-text">List</span></a>
+                                <a href="{{route('#')}}" class="nk-menu-link"><span class="nk-menu-text">List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add</span></a>
+                                <a href="{{route('#')}}" class="nk-menu-link"><span class="nk-menu-text">Add</span></a>
                             </li>
-                        </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
+                        </ul>
+                    </li> --}}
                     {{-- <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>

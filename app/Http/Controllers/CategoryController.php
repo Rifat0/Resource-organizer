@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Session;
+use Illuminate\Support\Facades\Session ;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category.list');
+        return view('content.category.list');
     }
 
     public function addForm()

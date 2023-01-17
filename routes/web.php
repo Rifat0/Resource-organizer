@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,7 +23,6 @@ Route::get('/', function () {
 Route::controller(LoginController::class)->group(function(){
 
     Route::get('login', 'index')->name('login');
-
     Route::post('login', 'tryLogin')->name('sample.validate_login');
 
 });
@@ -30,13 +30,21 @@ Route::controller(LoginController::class)->group(function(){
 Route::group(['middleware' => 'authenticated'], function () {
 
     Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
-    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('category-add', 'addForm')->name('category.add');
+        Route::post('category-list', 'store')->name('category.submit');
+        Route::get('category-list', 'list')->name('category.list');
+        Route::get('category-edit/{categoryId}', 'edit')->name('category.edit');
+        Route::get('category-change-status/{categoryId}', 'changeStatus')->name('category.change.status');
+        Route::get('category-delete/{categoryId}', 'delete')->name('category.delete');
+    });
 
-    Route::get('category-add', [CategoryController::class, 'addForm'])->name('category.add');
-    Route::post('category-store/{categoryId?}', [CategoryController::class, 'store'])->name('category.submit');
-    Route::get('category-list', [CategoryController::class, 'list'])->name('category.list');
-    Route::get('category-edit/{categoryId}', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::get('category-change-status/{categoryId}', [CategoryController::class, 'changeStatus'])->name('category.change.status');
-    Route::get('category-delete/{categoryId}', [CategoryController::class, 'delete'])->name('category.delete');
+    Route::get('sub-category-add/{categoryId?}', [SubCategoryController::class, 'addForm'])->name('sub.category.add');
+    Route::post('sub-category-store/{subCategoryId?}', [SubCategoryController::class, 'store'])->name('sub.category.submit');
+    Route::get('sub-category-list/{categoryId?}', [SubCategoryController::class, 'list'])->name('sub.category.list');
+    Route::get('sub-category-change-status/{subCategoryId}', [SubCategoryController::class, 'changeStatus'])->name('sub.category.change.status');
+    Route::get('sub-category-edit/{subCategoryId}', [SubCategoryController::class, 'edit'])->name('sub.category.edit');
+    Route::get('sub-category-delete/{subCategoryId}', [SubCategoryController::class, 'delete'])->name('sub.category.delete');
 });
