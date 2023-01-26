@@ -29,7 +29,7 @@
                                                         @endforeach
                                                         @endif
                                                     </select>
-                                                    <label class="form-label-outlined" for="outlined-select">Category</label>
+                                                    <label class="form-label-outlined" for="outlined-select">Header</label>
                                                     @if($errors->has('category'))
                                                         <div class="error">{{ $errors->first('category') }}</div>
                                                     @endif

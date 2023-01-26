@@ -5,9 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class SubCategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +15,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'User1',
-            'email' => 'user1@email.com',
-            'password' => Hash::make('password'),
+        DB::table('sub_categories')->insert([
+            'category' => 1001,
+            'sub_category_name' => "Demo Sub Header",
         ]);
     }
 }

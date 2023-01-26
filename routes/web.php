@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\ItemController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,10 +42,22 @@ Route::group(['middleware' => 'authenticated'], function () {
         Route::get('category-delete/{categoryId}', 'delete')->name('category.delete');
     });
 
-    Route::get('sub-category-add/{categoryId?}', [SubCategoryController::class, 'addForm'])->name('sub.category.add');
-    Route::post('sub-category-store/{subCategoryId?}', [SubCategoryController::class, 'store'])->name('sub.category.submit');
-    Route::get('sub-category-list/{categoryId?}', [SubCategoryController::class, 'list'])->name('sub.category.list');
-    Route::get('sub-category-change-status/{subCategoryId}', [SubCategoryController::class, 'changeStatus'])->name('sub.category.change.status');
-    Route::get('sub-category-edit/{subCategoryId}', [SubCategoryController::class, 'edit'])->name('sub.category.edit');
-    Route::get('sub-category-delete/{subCategoryId}', [SubCategoryController::class, 'delete'])->name('sub.category.delete');
+    Route::controller(SubCategoryController::class)->group(function(){
+        Route::get('sub-category-add/{categoryId?}', 'addForm')->name('sub.category.add');
+        Route::post('sub-category-store/{subCategoryId?}', 'store')->name('sub.category.submit');
+        Route::get('sub-category-list/{categoryId?}', 'list')->name('sub.category.list');
+        Route::get('sub-category-edit/{subCategoryId}', 'edit')->name('sub.category.edit');
+        Route::get('sub-category-change-status/{subCategoryId}', 'changeStatus')->name('sub.category.change.status');
+        Route::get('sub-category-delete/{subCategoryId}', 'delete')->name('sub.category.delete');
+    });
+
+    Route::controller(ItemController::class)->group(function(){
+        Route::get('item-add', 'addForm')->name('item.add');
+        Route::post('item-store', 'store')->name('item.submit');
+        Route::get('item-list', 'list')->name('item.list');
+        Route::get('get-sub-category/{categoryId?}', 'getSubCategory')->name('get.sub.category');
+        // Route::get('sub-category-edit/{subCategoryId}', 'edit')->name('sub.category.edit');
+        // Route::get('sub-category-change-status/{subCategoryId}', 'changeStatus')->name('sub.category.change.status');
+        // Route::get('sub-category-delete/{subCategoryId}', 'delete')->name('sub.category.delete');
+    });
 });

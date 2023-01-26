@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class SubCategoryController extends Controller
 {
-    public function index()
-    {
-        return view('subCategory.list');
-    }
-
     public function addForm($categoryId=false)
     {
         $categoryData = Category::all();

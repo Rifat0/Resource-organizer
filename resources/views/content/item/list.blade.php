@@ -8,9 +8,9 @@
                 <div class="nk-block-head nk-block-head-sm">
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title">Projects</h3>
+                            <h3 class="nk-block-title page-title">Items</h3>
                             <div class="nk-block-des text-soft">
-                                <p>You have total 95 projects.</p>
+                                <p>You have total 95 items.</p>
                             </div>
                         </div><!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">
@@ -31,7 +31,7 @@
                                             </div>
                                         </li>
                                         <li class="nk-block-tools-opt d-none d-sm-block">
-                                            <a href="#" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Project</span></a>
+                                            <a href="#" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Item</span></a>
                                         </li>
                                         <li class="nk-block-tools-opt d-block d-sm-none">
                                             <a href="#" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
