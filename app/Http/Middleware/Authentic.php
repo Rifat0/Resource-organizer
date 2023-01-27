@@ -19,7 +19,6 @@ class Authentic
         if ($request->session()->has('auth_data') && !empty($request->session()->get('auth_data'))) {
             return $next($request);
         }
-
         return redirect('/login');
     }
 }

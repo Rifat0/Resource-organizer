@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('item_use', function (Blueprint $table) {
             $table->id('item_use_id')->index();
+            $table->unsignedBigInteger('item');
+            $table->foreign('item')->references('item_id')->on('item')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

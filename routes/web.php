@@ -18,14 +18,12 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ItemController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('dashboard'));
 })->middleware('auth.session');
 
 Route::controller(LoginController::class)->group(function(){
-
     Route::get('login', 'index')->name('login');
     Route::post('login', 'tryLogin')->name('sample.validate_login');
-
 });
 
 Route::group(['middleware' => 'authenticated'], function () {
@@ -56,7 +54,7 @@ Route::group(['middleware' => 'authenticated'], function () {
         Route::post('item-store', 'store')->name('item.submit');
         Route::get('item-list', 'list')->name('item.list');
         Route::get('get-sub-category/{categoryId?}', 'getSubCategory')->name('get.sub.category');
-        // Route::get('sub-category-edit/{subCategoryId}', 'edit')->name('sub.category.edit');
+        Route::get('item-details/{itemId}', 'details')->name('item.details');
         // Route::get('sub-category-change-status/{subCategoryId}', 'changeStatus')->name('sub.category.change.status');
         // Route::get('sub-category-delete/{subCategoryId}', 'delete')->name('sub.category.delete');
     });

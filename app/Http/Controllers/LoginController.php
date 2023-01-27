@@ -10,6 +10,9 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if(session()->get('auth_data')){
+            return redirect(route('dashboard'));
+        }
         return view('auth.login');
     }
 

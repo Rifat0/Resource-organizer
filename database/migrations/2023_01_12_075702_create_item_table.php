@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('author');
             $table->foreign('author')->references('user_id')->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('title',150)->notnullable();
-            $table->json('photos',150)->notnullable();
+            $table->json('photos',150)->nullable();
             $table->string('purchase_by',20)->nullable();
             $table->string('purchase_from',100)->nullable();
             $table->date('purchase_date')->nullable();

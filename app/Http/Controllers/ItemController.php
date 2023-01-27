@@ -53,10 +53,12 @@ class ItemController extends Controller
             $item->unit  = $data->unit;
             $item->save();
 
-            $location = new ItemLocation();
-            $location->item = $item->item_id;
-            $location->location_name = $data->current_location;
-            $location->save();
+            if(!empty($data->current_location)){
+                $location = new ItemLocation();
+                $location->item = $item->item_id;
+                $location->location_name = $data->current_location;
+                $location->save();
+            }
 
             if($data->hasFile('images')){
                 $all_photos=[];
@@ -82,7 +84,14 @@ class ItemController extends Controller
 
     public function list()
     {
-        return view('content.item.list');
+        $items = Item::with('last_location','last_use')->get();
+        return view('content.item.list',compact('items'));
+    }
+
+    public function details($itemId)
+    {
+        $itemData = Item::find($itemId);
+        return view('content.item.details',compact('itemData'));
     }
 
     // public function edit($categoryId)
