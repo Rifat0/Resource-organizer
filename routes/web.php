@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('login', 'index')->name('login');
-    Route::post('login', 'tryLogin')->name('sample.validate_login');
+    Route::post('login', 'tryLogin')->name('login.submit');
 });
 
 Route::group(['middleware' => 'authenticated'], function () {

@@ -6,18 +6,10 @@
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="components-preview wide-md mx-auto">
-                    <div class="nk-block-head nk-block-head-lg wide-sm">
-                        <div class="nk-block-head-content">
-                            <h2 class="nk-block-title fw-normal">Item Header</h2>
-                            {{-- <div class="nk-block-des">
-                                <p class="lead">Form is most esential part of your project. We styled out nicely so you can build your form so quickly.</p>
-                            </div> --}}
-                        </div>
-                    </div><!-- .nk-block -->
-                    
                     <div class="nk-block nk-block-lg">
                         <div class="card">
                             <div class="card-inner">
+                                <span class="preview-title-lg overline-title">Add Item Header</span>
                                 <form action="{{route('category.submit',@$categoryData->category_id)}}" method="POST">
                                     @csrf
                                     <div class="row gy-4">
@@ -48,7 +40,7 @@
                                             </div>
                                         </div> --}}
                                     </div>
-                                    <br />                                    
+                                    <br />
                                     <div class="row g-4">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -60,7 +52,7 @@
                             </div>
                         </div>
                     </div><!-- .nk-block -->
-                    
+
                 </div><!-- .components-preview -->
             </div>
         </div>

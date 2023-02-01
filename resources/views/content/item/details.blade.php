@@ -12,141 +12,85 @@
                                 <div class="col-lg-6">
                                     <div class="product-gallery me-xl-1 me-xxl-5">
                                         <div class="slider-init" id="sliderFor" data-slick='{"arrows": false, "fade": true, "asNavFor":"#sliderNav", "slidesToShow": 1, "slidesToScroll": 1}'>
+                                            @foreach (json_decode($itemData->photos) as $photo)
                                             <div class="slider-item rounded">
-                                                <img src="{{asset('images/product/lg-a.jpg')}}" class="rounded w-100" alt="">
+                                                <img src="{{asset('item_images').'/'.$photo}}" class="rounded w-100" alt="">
                                             </div>
-                                            <div class="slider-item rounded">
-                                                <img src="./images/product/lg-g.jpg" class="rounded w-100" alt="">
-                                            </div>
-                                            <div class="slider-item rounded">
-                                                <img src="./images/product/lg-d.jpg" class="rounded w-100" alt="">
-                                            </div>
-                                            <div class="slider-item rounded">
-                                                <img src="./images/product/lg-h.jpg" class="rounded w-100" alt="">
-                                            </div>
-                                            <div class="slider-item rounded">
-                                                <img src="./images/product/lg-e.jpg" class="rounded w-100" alt="">
-                                            </div>
-                                        </div><!-- .slider-init -->
+                                            @endforeach
+
+                                        </div>
                                         <div class="slider-init slider-nav" id="sliderNav" data-slick='{"arrows": false, "slidesToShow": 5, "slidesToScroll": 1, "asNavFor":"#sliderFor", "centerMode":true, "focusOnSelect": true,
                 "responsive":[ {"breakpoint": 1539,"settings":{"slidesToShow": 4}}, {"breakpoint": 768,"settings":{"slidesToShow": 3}}, {"breakpoint": 420,"settings":{"slidesToShow": 2}} ]
             }'>
+                                            @foreach (json_decode($itemData->photos) as $photo)
                                             <div class="slider-item">
                                                 <div class="thumb">
-                                                    <img src="./images/product/lg-a.jpg" class="rounded" alt="">
+                                                    <img src="{{asset('item_images').'/'.$photo}}" class="rounded" alt="">
                                                 </div>
                                             </div>
-                                            <div class="slider-item">
-                                                <div class="thumb">
-                                                    <img src="./images/product/lg-g.jpg" class="rounded" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="thumb">
-                                                    <img src="./images/product/lg-d.jpg" class="rounded" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="thumb">
-                                                    <img src="./images/product/lg-h.jpg" class="rounded" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="slider-item">
-                                                <div class="thumb">
-                                                    <img src="./images/product/lg-e.jpg" class="rounded" alt="">
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div><!-- .slider-nav -->
                                     </div><!-- .product-gallery -->
                                 </div><!-- .col -->
                                 <div class="col-lg-6">
                                     <div class="product-info mt-5 me-xxl-5">
-                                        <h4 class="product-price text-primary">$78.00 <small class="text-muted fs-14px">$98.00</small></h4>
-                                        <h2 class="product-title">Classy Modern Smart watch</h2>
-                                        <div class="product-rating">
-                                            <ul class="rating">
-                                                <li><em class="icon ni ni-star-fill"></em></li>
-                                                <li><em class="icon ni ni-star-fill"></em></li>
-                                                <li><em class="icon ni ni-star-fill"></em></li>
-                                                <li><em class="icon ni ni-star-fill"></em></li>
-                                                <li><em class="icon ni ni-star-half"></em></li>
-                                            </ul>
-                                            <div class="amount">(2 Reviews)</div>
-                                        </div><!-- .product-rating -->
+                                        <h2 class="product-title">{{$itemData->title}}</h2>
                                         <div class="product-excrept text-soft">
-                                            <p class="lead">I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you a complete account of the system, and expound the actual teaching.</p>
+                                            <p class="lead">{{$itemData->description}}</p>
                                         </div>
                                         <div class="product-meta">
                                             <ul class="d-flex g-3 gx-5">
                                                 <li>
-                                                    <div class="fs-14px text-muted">Type</div>
-                                                    <div class="fs-16px fw-bold text-secondary">Watch</div>
+                                                    <div class="fs-14px text-muted">Header</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->header->category_name}}</div>
                                                 </li>
                                                 <li>
-                                                    <div class="fs-14px text-muted">Model Number</div>
-                                                    <div class="fs-16px fw-bold text-secondary">Forerunner 290XT</div>
+                                                    <div class="fs-14px text-muted">Sub Header</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->subHeader->sub_category_name}}</div>
+                                                </li>
+                                            </ul>
+                                            <ul class="d-flex g-3 gx-5">
+                                                <li>
+                                                    <div class="fs-14px text-muted">Purchase By</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->purchase_by}}</div>
+                                                </li>
+                                                <li>
+                                                    <div class="fs-14px text-muted">From</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->purchase_from}}</div>
+                                                </li>
+                                                <li>
+                                                    <div class="fs-14px text-muted">Date</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->purchase_date}}</div>
+                                                </li>
+                                            </ul>
+                                            <ul class="d-flex g-3 gx-5">
+                                                <li>
+                                                    <div class="fs-14px text-muted">Purchase Price</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->price}}</div>
+                                                </li>
+                                                <li>
+                                                    <div class="fs-14px text-muted">Unit</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->unit}}</div>
+                                                </li>
+                                            </ul>
+                                            <ul class="d-flex g-3 gx-5">
+                                                <li>
+                                                    <div class="fs-14px text-muted">Added</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->created_at}}</div>
+                                                </li>
+                                                <li>
+                                                    <div class="fs-14px text-muted">Status</div>
+                                                    <div class="fs-16px fw-bold text-secondary">{{$itemData->status}}</div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="product-meta">
-                                            <h6 class="title">Color</h6>
-                                            <ul class="custom-control-group">
-                                                <li>
-                                                    <div class="custom-control color-control">
-                                                        <input type="radio" class="custom-control-input" id="productColor1" name="productColor" checked>
-                                                        <label class="custom-control-label dot dot-xl" data-bg="#754c24" for="productColor1"></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control color-control">
-                                                        <input type="radio" class="custom-control-input" id="productColor2" name="productColor">
-                                                        <label class="custom-control-label dot dot-xl" data-bg="#636363" for="productColor2"></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control color-control">
-                                                        <input type="radio" class="custom-control-input" id="productColor3" name="productColor">
-                                                        <label class="custom-control-label dot dot-xl" data-bg="#ba6ed4" for="productColor3"></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control color-control">
-                                                        <input type="radio" class="custom-control-input" id="productColor4" name="productColor">
-                                                        <label class="custom-control-label dot dot-xl" data-bg="#ff87a3" for="productColor4"></label>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <h6 class="fs-14px text-muted">Current Location</h6>
+                                            <div class="product-excrept text-soft">
+                                                <p class="fs-16px fw-bold text-secondary">{{$itemData->last_location->location_name}}</p>
+                                            </div>
                                         </div>
-                                        <div class="product-meta">
-                                            <h6 class="title">Size</h6>
-                                            <ul class="custom-control-group">
-                                                <li>
-                                                    <div class="custom-control custom-radio custom-control-pro no-control">
-                                                        <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck1" checked>
-                                                        <label class="custom-control-label" for="sizeCheck1">XS</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-radio custom-control-pro no-control">
-                                                        <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck2">
-                                                        <label class="custom-control-label" for="sizeCheck2">SM</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-radio custom-control-pro no-control">
-                                                        <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck3">
-                                                        <label class="custom-control-label" for="sizeCheck3">L</label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="custom-control custom-radio custom-control-pro no-control">
-                                                        <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck4">
-                                                        <label class="custom-control-label" for="sizeCheck4">XL</label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div><!-- .product-meta -->
-                                        <div class="product-meta">
+                                        {{-- <div class="product-meta">
                                             <ul class="d-flex flex-wrap ailgn-center g-2 pt-1">
                                                 <li class="w-140px">
                                                     <div class="form-control-wrap number-spinner-wrap">
@@ -162,177 +106,39 @@
                                                     <button class="btn btn-icon btn-trigger text-primary"><em class="icon ni ni-heart"></em></button>
                                                 </li>
                                             </ul>
-                                        </div><!-- .product-meta -->
+                                        </div> --}}
                                     </div><!-- .product-info -->
                                 </div><!-- .col -->
                             </div><!-- .row -->
                             <hr class="hr border-light">
                             <div class="row g-gs flex-lg-row-reverse pt-5">
-                                <div class="col-lg-5">
-                                    <div class="video">
-                                        <img class="video-poster w-100" src="./images/product/video-a.jpg" alt="">
-                                        <a class="video-play popup-video" href="https://www.youtube.com/watch?v=SSo_EIwHSd4">
-                                            <em class="icon ni ni-play"></em>
-                                            <span>Watch Video</span>
-                                        </a>
-                                    </div>
-                                </div><!-- .col -->
-                                <div class="col-lg-7">
+                                <div class="col-lg-12">
                                     <div class="product-details entry me-xxl-3">
-                                        <h3>Product details of Comfy cushions</h3>
-                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Neque porro quisquam est, qui dolorem consectetur, adipisci velit.Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-                                        <ul class="list list-sm list-checked">
-                                            <li>Meets and/or exceeds performance standards.</li>
-                                            <li>Liumbar support.</li>
-                                            <li>Made of bonded teather and poiyurethane.</li>
-                                            <li>Metal frame.</li>
-                                            <li>Anatomically shaped cork-latex</li>
-                                            <li>As attractively priced as you look attractive in one</li>
-                                        </ul>
-                                        <p>Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-                                        <h3>The best seats in the house</h3>
-                                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings. Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+                                        <h3>Uses History</h3>
+                                        <table class="table table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Update</th>
+                                                <th scope="col">Action</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($itemData->uses as $uses)
+                                                <tr>
+                                                    <th scope="row">{{$uses->item_use_id}}</th>
+                                                    <td>{{$uses->created_at}}</td>
+                                                    <td>{{$uses->updated_at}}</td>
+                                                    <td>@mdo</td>
+                                                  </tr>
+                                                @endforeach
+                                            </tbody>
+                                          </table>
                                     </div>
-                                </div><!-- .col -->
+                                </div>
                             </div><!-- .row -->
                         </div>
-                    </div>
-                </div><!-- .nk-block -->
-                <div class="nk-block nk-block-lg">
-                    <div class="nk-block-head">
-                        <div class="nk-block-between g-3">
-                            <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Related Products</h3>
-                            </div>
-                        </div>
-                    </div><!-- .nk-block-head -->
-                    <div class="slider-init row" data-slick='{"slidesToShow": 4, "centerMode": false, "slidesToScroll": 1, "infinite":false, "responsive":[ {"breakpoint": 1540,"settings":{"slidesToShow": 3}},{"breakpoint": 992,"settings":{"slidesToShow": 2}}, {"breakpoint": 576,"settings":{"slidesToShow": 1}} ]}'>
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-a.jpg" alt="">
-                                    </a>
-                                    <ul class="product-badges">
-                                        <li><span class="badge bg-success">New</span></li>
-                                    </ul>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Smart Watch</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">Classy Modern Smart watch</a></h5>
-                                    <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$350</small> $324</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-b.jpg" alt="">
-                                    </a>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Vintage Phone</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">White Vintage telephone</a></h5>
-                                    <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$209</small> $119</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-c.jpg" alt="">
-                                    </a>
-                                    <ul class="product-badges">
-                                        <li><span class="badge bg-danger">Hot</span></li>
-                                    </ul>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Headphone</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">Black Wireless Headphones</a></h5>
-                                    <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$129</small> $89</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-d.jpg" alt="">
-                                    </a>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Smart Watch</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">Modular Smart Watch</a></h5>
-                                    <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$169</small> $120</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-e.jpg" alt="">
-                                    </a>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Headphones</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">White Wireless Headphones</a></h5>
-                                    <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$109</small> $78</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
-                        <div class="col">
-                            <div class="card card-bordered product-card">
-                                <div class="product-thumb">
-                                    <a href="html/product-details.html">
-                                        <img class="card-img-top" src="./images/product/lg-f.jpg" alt="">
-                                    </a>
-                                    <ul class="product-actions">
-                                        <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                        <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                    </ul>
-                                </div>
-                                <div class="card-inner text-center">
-                                    <ul class="product-tags">
-                                        <li><a href="#">Phone</a></li>
-                                    </ul>
-                                    <h5 class="product-title"><a href="html/product-details.html">Black Android Phone</a></h5>
-                                    <div class="product-price text-primary h5">$329</div>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
                     </div>
                 </div>
             </div>
