@@ -90,7 +90,7 @@ class ItemController extends Controller
 
     public function details($itemId)
     {
-        $itemData = Item::find($itemId);
+        $itemData = Item::with('header','subHeader','last_location','uses')->find($itemId);
         return view('content.item.details',compact('itemData'));
     }
 

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ItemLocation;
 use App\Models\ItemUse;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 class Item extends Model
 {
@@ -39,5 +41,15 @@ class Item extends Model
     public function uses()
     {
         return $this->hasMany(ItemUse::class, 'item', 'item_id');
+    }
+
+    public function header()
+    {
+        return $this->hasOne(Category::class, 'category_id', 'category');
+    }
+
+    public function subHeader()
+    {
+        return $this->hasOne(SubCategory::class, 'sub_category_id', 'sub_category');
     }
 }

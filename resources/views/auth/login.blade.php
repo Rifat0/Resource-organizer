@@ -2,15 +2,16 @@
 <html lang="zxx" class="js">
 
 <head>
-    <base href="../../../">
     <meta charset="utf-8">
+    <meta name="author" content="Rifat">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="./images/favicon.png">
+    <link rel="shortcut icon" href="{{asset('/images/favicon.png')}}">
     <!-- Page Title  -->
     <title>Login || Resource organizer</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('assets/css/dashlite.css')}}">
+    <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css')}}">
 </head>
 
 <body class="nk-body bg-white npc-default pg-auth">
@@ -21,163 +22,74 @@
             <div class="nk-wrap nk-wrap-nosidebar">
                 <!-- content @s -->
                 <div class="nk-content ">
-                    <div class="nk-split nk-split-page nk-split-lg">
-                        <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
-                            <div class="absolute-top-right d-lg-none p-3 p-sm-5">
-                                <a href="#" class="toggle btn-white btn btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
-                            </div>
-                            <div class="nk-block nk-block-middle nk-auth-body">
-                                <div class="brand-logo pb-5">
-                                    <a href="html/index.html" class="logo-link">
-                                        <img class="logo-light logo-img logo-img-lg" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                        <img class="logo-dark logo-img logo-img-lg" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                                    </a>
-                                </div>
+                    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
+                        <div class="brand-logo pb-4 text-center">
+                            <a href="#" class="logo-link">
+                                <img class="logo-light logo-img logo-img-lg" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                            </a>
+                        </div>
+                        <div class="card">
+                            <div class="card-inner card-inner-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h5 class="nk-block-title">Sign-In</h5>
-                                        <div class="nk-block-des">
-                                            <p>Access the DashLite panel using your email and passcode.</p>
-                                        </div>
+                                        <h4 class="nk-block-title">Sign-In</h4>
                                     </div>
-                                </div><!-- .nk-block-head -->
-                                @if($errors->any())
-                                    {!! implode('',$errors->all('<span class="text text-danger">:message</span>')) !!}
-                                @endif
-                                
-                                <form class="form-validate is-alter" autocomplete="off" method="POST" action="{{ url('/login') }}">
-                                        @csrf
+                                </div>
+                                <form class="form-validate is-alter" autocomplete="off" method="POST" action="{{ route('login.submit') }}">
+                                    @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="email-address">Email or Username</label>
-                                            <a class="link link-primary link-sm" tabindex="-1" href="#">Need Help?</a>
+                                            <label class="form-label" for="email">Email</label>
                                         </div>
                                         <div class="form-control-wrap">
-                                            <input name="email" autocomplete="off" type="text" class="form-control form-control-lg" placeholder="Enter your email address or username">
+                                            <input type="text" name="email" value="{{old('email')}}" class="form-control form-control-lg" id="email" placeholder="Enter your email">
+                                            @if($errors->has('email'))
+                                                <div class="error">{{ $errors->first('email') }}</div>
+                                            @endif
                                         </div>
-                                    </div><!-- .form-group -->
+                                    </div>
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="password">Passcode</label>
-                                            <a class="link link-primary link-sm" tabindex="-1" href="html/pages/auths/auth-reset.html">Forgot Code?</a>
+                                            <a class="link link-primary link-sm" href="html/pages/auths/auth-reset-v2.html">Forgot Code?</a>
                                         </div>
                                         <div class="form-control-wrap">
-                                            <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
+                                            <a href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input name="password" autocomplete="new-password" type="password" class="form-control form-control-lg" placeholder="Enter your passcode">
+                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
+                                            @if($errors->has('password'))
+                                                <div class="error">{{ $errors->first('password') }}</div>
+                                            @endif
                                         </div>
-                                    </div><!-- .form-group -->
+                                    </div>
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                                     </div>
-                                </form><!-- form -->
-                                <div class="form-note-s2 pt-4"> New on our platform? <a href="html/pages/auths/auth-register.html">Create an account</a>
+                                </form>
+                                <div class="form-note-s2 text-center pt-4"> New on our platform? <a href="html/pages/auths/auth-register-v2.html">Create an account</a>
                                 </div>
-                                <div class="text-center pt-4 pb-3">
+                                {{-- <div class="text-center pt-4 pb-3">
                                     <h6 class="overline-title overline-title-sap"><span>OR</span></h6>
                                 </div>
                                 <ul class="nav justify-center gx-4">
                                     <li class="nav-item"><a class="nav-link" href="#">Facebook</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Google</a></li>
-                                </ul>
-                                <div class="text-center mt-5">
-                                    <span class="fw-500">I don't have an account? <a href="#">Try 15 days free</a></span>
+                                </ul> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nk-footer nk-auth-footer-full">
+                        <div class="container wide-lg">
+                            <div class="row g-3">
+                                <div class="col-lg-6">
+                                    <div class="nk-footer-copyright"><h4> &copy; 2023 Resource Manager. Devloped by <a href="https://rifat0.github.io" target="_blank">Rifat. </h4></a></div>
                                 </div>
-                            </div><!-- .nk-block -->
-                            <div class="nk-block nk-auth-footer">
-                                <div class="nk-block-between">
-                                    <ul class="nav nav-sm">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Terms & Condition</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Privacy Policy</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Help</a>
-                                        </li>
-                                        <li class="nav-item dropup">
-                                            <a class="dropdown-toggle dropdown-indicator has-indicator nav-link" data-bs-toggle="dropdown" data-offset="0,10"><small>English</small></a>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                                                <ul class="language-list">
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/english.png" alt="" class="language-flag">
-                                                            <span class="language-name">English</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/spanish.png" alt="" class="language-flag">
-                                                            <span class="language-name">Español</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/french.png" alt="" class="language-flag">
-                                                            <span class="language-name">Français</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="language-item">
-                                                            <img src="./images/flags/turkey.png" alt="" class="language-flag">
-                                                            <span class="language-name">Türkçe</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul><!-- .nav -->
-                                </div>
-                                <div class="mt-3">
-                                    <p>&copy; 2022 DashLite. All Rights Reserved.</p>
-                                </div>
-                            </div><!-- .nk-block -->
-                        </div><!-- .nk-split-content -->
-                        <div class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-toggle-body="true" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
-                            <div class="slider-wrap w-100 w-max-550px p-3 p-sm-5 m-auto">
-                                <div class="slider-init" data-slick='{"dots":true, "arrows":false}'>
-                                    <div class="slider-item">
-                                        <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-a.png" srcset="./images/slides/promo-a2x.png 2x" alt="">
-                                            </div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- .slider-item -->
-                                    <div class="slider-item">
-                                        <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-b.png" srcset="./images/slides/promo-b2x.png 2x" alt="">
-                                            </div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- .slider-item -->
-                                    <div class="slider-item">
-                                        <div class="nk-feature nk-feature-center">
-                                            <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-c.png" srcset="./images/slides/promo-c2x.png 2x" alt="">
-                                            </div>
-                                            <div class="nk-feature-content py-4 p-sm-5">
-                                                <h4>Dashlite</h4>
-                                                <p>You can start to create your products easily with its user-friendly design & most completed responsive layout.</p>
-                                            </div>
-                                        </div>
-                                    </div><!-- .slider-item -->
-                                </div><!-- .slider-init -->
-                                <div class="slider-dots"></div>
-                                <div class="slider-arrows"></div>
-                            </div><!-- .slider-wrap -->
-                        </div><!-- .nk-split-content -->
-                    </div><!-- .nk-split -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- wrap @e -->
             </div>
@@ -187,7 +99,8 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="{{asset('assets/js/bundle.js')}}"></script>
-    <script src="{{asset('assets/js/scripts.js')}}"></script>
+    <script src="./assets/js/bundle.js?ver=3.1.1"></script>
+    <script src="./assets/js/scripts.js?ver=3.1.1"></script>
+    <!-- select region modal -->
 
 </html>

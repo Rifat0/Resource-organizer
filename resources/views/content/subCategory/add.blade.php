@@ -6,15 +6,10 @@
         <div class="nk-content-inner">
             <div class="nk-content-body">
                 <div class="components-preview wide-md mx-auto">
-                    <div class="nk-block-head nk-block-head-lg wide-sm">
-                        <div class="nk-block-head-content">
-                            <h2 class="nk-block-title fw-normal">Item Sub Header</h2>
-                        </div>
-                    </div><!-- .nk-block -->
-
                     <div class="nk-block nk-block-lg">
                         <div class="card">
                             <div class="card-inner">
+                                <span class="preview-title-lg overline-title">Add Item Sub Header</span>
                                 <form action="{{route('sub.category.submit',@$subCategoryData->sub_category_id)}}" method="POST">
                                     @csrf
                                     <div class="row gy-4">
