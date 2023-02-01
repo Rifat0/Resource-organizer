@@ -2,7 +2,7 @@ version: '3'
 services:
     RMS:
         build:
-            context: .
+            context: ./vendor/laravel/sail/runtimes/8.2
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -20,7 +20,7 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - RMS
+            - sail
         depends_on:
             - mysql
     mysql:
@@ -38,7 +38,7 @@ services:
             - 'sail-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
-            - RMS
+            - sail
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
@@ -52,10 +52,11 @@ services:
             PMA_HOST: mysql
             PMA_PORT: 3306
         networks:
-            - RMS
+            - sail
 networks:
-    RMS:
+    sail:
         driver: bridge
 volumes:
     sail-mysql:
         driver: local
+
