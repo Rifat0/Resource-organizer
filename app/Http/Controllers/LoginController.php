@@ -41,11 +41,6 @@ class LoginController extends Controller
         ])->onlyInput('email');
     }
 
-    function dashboard()
-    {
-        return view('content.dashboard');
-    }
-
     function logout(Request $request)
     {
         Session::flush();

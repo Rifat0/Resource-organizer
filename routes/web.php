@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ItemController;
@@ -28,7 +29,7 @@ Route::controller(LoginController::class)->group(function(){
 
 Route::group(['middleware' => 'authenticated'], function () {
 
-    Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::controller(CategoryController::class)->group(function(){
@@ -52,7 +53,7 @@ Route::group(['middleware' => 'authenticated'], function () {
     Route::controller(ItemController::class)->group(function(){
         Route::get('item-add', 'addForm')->name('item.add');
         Route::post('item-store', 'store')->name('item.submit');
-        Route::get('item-list', 'list')->name('item.list');
+        Route::get('item-list/{categoryId?}', 'list')->name('item.list');
         Route::get('get-sub-category/{categoryId?}', 'getSubCategory')->name('get.sub.category');
         Route::get('item-details/{itemId}', 'details')->name('item.details');
         // Route::get('sub-category-change-status/{subCategoryId}', 'changeStatus')->name('sub.category.change.status');

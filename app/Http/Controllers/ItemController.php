@@ -82,9 +82,13 @@ class ItemController extends Controller
         return redirect()->route('item.list');
     }
 
-    public function list()
+    public function list($categoryId=false)
     {
-        $items = Item::with('last_location','last_use')->get();
+        $items = Item::with('last_location','last_use');
+        if($categoryId){
+            $items = $items->where('category',$categoryId);
+        }
+        $items = $items->get();
         return view('content.item.list',compact('items'));
     }
 

@@ -17,6 +17,12 @@
         <div class="nk-sidebar-content">
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
+                    <li class="nk-menu-item active current-page">
+                        <a href="{{route('dashboard')}}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
+                            <span class="nk-menu-text">Dashboard</span>
+                        </a>
+                    </li>
 
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
