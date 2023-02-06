@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Item;
 
 class Category extends Model
 {
@@ -25,4 +26,9 @@ class Category extends Model
     protected $casts = [
         'deleted_at' => 'datetime',
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'category', 'category_id');
+    }
 }
